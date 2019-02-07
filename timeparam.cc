@@ -156,10 +156,10 @@ vector<double> timeparam::getVisTime(TVector3 ScintPoint, TVector3 OpDetPoint, i
     TVector3 bounce_point(0,0,0);
     
     // distance to wall    
-    TVector3 v_to_wall(-ScintPoint[0],0,0);
+    TVector3 v_to_wall(cathode_plane_depth-ScintPoint[0],0,0);
 
     // hotspot is point on wall where TPB is activated most intensely by the scintillation
-    TVector3 hotspot(0,ScintPoint[1],ScintPoint[2]);
+    TVector3 hotspot(cathode_plane_depth,ScintPoint[1],ScintPoint[2]);
     
     // define "image" by reflecting over plane
     image = hotspot + v_to_wall*(n_LAr_vis/n_LAr_VUV);
@@ -219,7 +219,7 @@ vector<double> timeparam::getVisTime(TVector3 ScintPoint, TVector3 OpDetPoint, i
     //  1). tau = exponential smearing factor, varies with distance and angle
     //  2). cutoff = largest smeared time allowed, preventing excessively large times caused by exponential
     // distance to cathode
-    double distance_cathode_plane = std::abs(ScintPoint[0]);
+    double distance_cathode_plane = std::abs(cathode_plane_depth - ScintPoint[0]);
     // angular bin
     int alpha_bin = alpha / 10;
     if (alpha_bin > 3) {

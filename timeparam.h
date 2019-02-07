@@ -66,7 +66,7 @@ private:
 	const double vis_vmean = 23.99; // cm/ns
 	const double vis_vrms = 0.07508; // cm/ns
 	// x-position of cathode foils, matching position of foils in gdml file - this needs changing if using different geometry
-	const double plane_depth = 363.38405;
+	const double cathode_plane_depth = 0;
 	// refractive indices in LAr
 	double n_LAr_VUV = 2.632;       // effective index due to group vel.
 	double n_LAr_vis = 1.23;
