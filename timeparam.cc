@@ -228,6 +228,11 @@ vector<double> timeparam::getVisTime(TVector3 ScintPoint, TVector3 OpDetPoint, i
     // cut-off and tau
     double cutoff = interpolate( refl_vdistances, cut_off_bins[alpha_bin], distance_cathode_plane, true );
     double tau = interpolate( refl_vdistances, tau_bins[alpha_bin], distance_cathode_plane, true );
+
+    // added failsafe in case tau extrapolation for d > 200 drops below zero [could it do this?]
+    if (tau < 0){
+        tau = 0;
+    }  
     
     // apply smearing:
     for (int i=0; i < number_photons; i++){
