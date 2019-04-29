@@ -222,7 +222,7 @@ vector<double> timeparam::getVisTime(TVector3 ScintPoint, TVector3 OpDetPoint, i
     double distance_cathode_plane = std::abs(cathode_plane_depth - ScintPoint[0]);
     // angular bin
     int alpha_bin = alpha / 10;
-    if (alpha_bin > tau_bins.size()) {
+    if (alpha_bin >= tau_bins.size()) {
         alpha_bin = tau_bins.size() - 1;      // default to the largest available bin if alpha larger than parameterised region found; i.e. last bin effectively [last bin start value, 90] deg bin
     }
     // cut-off and tau
